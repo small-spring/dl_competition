@@ -46,6 +46,7 @@ def save_optical_flow_to_npy(flow: torch.Tensor, file_name: str):
 
 @hydra.main(version_base=None, config_path="configs", config_name="base")
 def main(args: DictConfig):
+    print(args)
     set_seed(args.seed)
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     '''
@@ -136,15 +137,16 @@ def main(args: DictConfig):
 
             total_loss += loss.item()
         print(f'Epoch {epoch+1}, Loss: {total_loss / len(train_data)}')
+        current_time = time.strftime("%Y%m%d%H%M%S")
+        model_path = f"checkpoints/model_{current_time}.pth"
+        torch.save(model.state_dict(), model_path)
+        print(f"Model saved to {model_path}")
 
     # Create the directory if it doesn't exist
     if not os.path.exists('checkpoints'):
         os.makedirs('checkpoints')
     
-    current_time = time.strftime("%Y%m%d%H%M%S")
-    model_path = f"checkpoints/model_{current_time}.pth"
-    torch.save(model.state_dict(), model_path)
-    print(f"Model saved to {model_path}")
+
 
     # ------------------
     #   Start predicting
