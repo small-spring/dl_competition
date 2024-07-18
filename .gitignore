@@ -1,3 +1,11 @@
 /data
 /checkpoints
 submission.npy
+
+*.png
+*.h5
+*.mp4
+*.npy
+*.pth
+
+/yamit-modified/data

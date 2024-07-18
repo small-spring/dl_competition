@@ -1,0 +1,15 @@
+{
+    "name": "gpu-jupyter-py",
+    "dockerComposeFile": "docker-compose.yml",
+    "service": "workspace",
+    "workspaceFolder": "/workspace",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "MS-CEINTL.vscode-language-pack-ja",
+                "ms-toolsai.jupyter",
+                "ms-python.python"
+            ]
+        }
+    }
+}

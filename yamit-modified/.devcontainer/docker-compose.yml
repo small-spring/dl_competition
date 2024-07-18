@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+  workspace:
+    build:
+      context: ..
+      dockerfile: .devcontainer/Dockerfile
+    environment:
+      - PYTHONPATH=/workspace:/home
+    volumes:
+      - ..:/workspace
+    command: sleep infinity
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu]

@@ -5,9 +5,9 @@ from typing import Dict, Any
 
 _BASE_CHANNELS = 64
 
-class EVFlowNetMy(nn.Module):
+class EVFlowNet(nn.Module):
     def __init__(self, args):
-        super(EVFlowNetMy,self).__init__()
+        super(EVFlowNet,self).__init__()
         self._args = args
 
         self.encoder1 = general_conv2d(in_channels = 4, out_channels=_BASE_CHANNELS, do_batch_norm=not self._args.no_batch_norm)
